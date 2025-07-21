@@ -7,32 +7,19 @@
         });
 
         // Smooth scrolling for navigation links
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function(e) {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-                
-                if (targetElement) {
-                    targetElement.scrollIntoView({
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
                     });
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
                 }
-                
-                // Close mobile menu if open
-                mobileMenu.classList.add('hidden');
             });
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                navbar.classList.add('nav-scrolled');
-            } else {
-                navbar.classList.remove('nav-scrolled');
-            }
         });
 
         // Fade in animation on scroll
@@ -49,35 +36,35 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => {
+        // Observe all elements with fade-in class
+        document.querySelectorAll('.fade-in').forEach(el => {
             observer.observe(el);
         });
 
         // Form submission
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
+        document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Show success message
-            alert('Obrigado pela sua consulta! Entraremos em contacto consigo dentro de 24 horas com um orçamento detalhado.');
-            
-            // Reset form
-            this.reset();
+            alert('Mensagem enviada com sucesso! Entraremos em contacto consigo brevemente.');
         });
 
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Trigger initial fade-in animations for visible elements
-            const visibleElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right');
-            visibleElements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight && rect.bottom > 0) {
-                    el.classList.add('visible');
+        // Active navigation highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('text-primary');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('text-primary');
                 }
             });
         });
-
-    
