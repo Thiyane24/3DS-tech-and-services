@@ -41,7 +41,7 @@
         });
 
     function sendWhatsAppMessage(buttonType) {
-    const phoneNumber = '258851234567'; // Your WhatsApp number
+    const phoneNumber = '258852470473'; // Your WhatsApp number
     
     let message = '';
     if(buttonType === 'start') {
