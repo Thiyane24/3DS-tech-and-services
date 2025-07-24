@@ -1,0 +1,123 @@
+  body {
+            background-color: #0f172a; /* Dark blue background */
+            color: #f8fafc;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(90deg, #06b6d4 0%, #0284c7 50%, #0369a1 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #008deb 0%, #2600ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-gradient {
+            background: linear-gradient(145deg, rgba(15,23,42,0.9) 0%, rgba(15,23,42,0.7) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .glow {
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #031c61 0%, #0b088d 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(6, 182, 212, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #0d0b83;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background: rgba(6, 182, 212, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(6, 182, 212, 0.1);
+        }
+
+        /* Glassmorphism cards */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            .hero-content {
+                padding: 1.5rem;
+            }
+            .hero-title {
+                font-size: 2.25rem;
+                line-height: 2.5rem;
+            }
+            .hero-description {
+                font-size: 1rem;
+            }
+            .service-card {
+                padding: 1.5rem;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .mission-card {
+                padding: 1.5rem;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+        
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .hero-content {
+                padding: 2rem;
+            }
+            .hero-title {
+                font-size: 3rem;
+                line-height: 1;
+            }
+            .service-card {
+                padding: 2rem;
+            }
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
