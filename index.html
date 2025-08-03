@@ -13,6 +13,7 @@
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com https://maps.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; frame-src https://www.google.com; media-src 'self'">
     <!-- SEO  -->
       <meta name="robots" content="index, follow">
     <meta name="author" content="3DS Tech and Services">
@@ -66,7 +67,7 @@
 
     <title>3DS Tech and Services - Soluções Completas de TI</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="shortcut icon" href="Copilot_20250724_005222.png" type="image/x-icon">
+    <link rel="shortcut icon" href="Copilot_20250724_005222.webp" type="image/x-icon">
     <script>
         tailwind.config = {
             theme: {
@@ -91,7 +92,7 @@
             <div class="flex justify-between h-16 md:h-20">
                 <div class="flex items-center">
                     <div class="flex-shrink-0 flex items-center">
-                        <img src="Copilot_20250724_005222.png" alt="3DS Tech Logo" class="h-8 md:h-10 mr-2 md:mr-3">
+                        <img src="Copilot_20250724_005222.webp" alt="3DS Tech Logo" class="h-8 md:h-10 mr-2 md:mr-3">
                         <span class="text-lg gradient-text md:text-xl font-bold sm:block">3DS <span class="text-primary">Tech</span> and Services</span>
                     </div>
                 </div>
@@ -127,60 +128,65 @@
         </div>
     </nav>
     <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen flex items-center pt-20 md:pt-24 pb-16 overflow-hidden">
-        <!-- Background with dark overlay -->
-        <div class="absolute inset-0 w-full h-full z-0">
+  <!-- Hero Section -->
+<section id="home" class="relative min-h-screen flex items-center pt-20 md:pt-24 pb-16 overflow-hidden">
+    <!-- Video Background -->
+    <div class="absolute inset-0 w-full h-full z-0 overflow-hidden">
+        <video autoplay muted loop playsinline class="w-full h-full object-cover">
+            <source src="a subtle, light, and slightly waving motion for a gradient from black to blue to light purple, suitable for a website hero section background.mp4" type="video/mp4">
+            <!-- Fallback image if video doesn't load -->
             <img src="Gemini_Generated_Image_mn2h07mn2h07mn2h.webp" 
                 alt="Technology Solutions" 
                 class="w-full h-full object-cover object-center">
-            <div class="absolute inset-0 bg-darkblue/80 mix-blend-multiply"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-darkblue to-transparent"></div>
-            <!-- Grid pattern overlay -->
-            <div class="absolute inset-0 opacity-20" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIj48cGF0aCBkPSJNMCAwaDYwdjYwSDB6Ii8+PC9nPjwvZz48L3N2Zz4=');"></div>
-        </div>
-        
-        <!-- Content overlay -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 relative z-10 w-full">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
-                <div class="text-white space-y-6 md:space-y-8  p-6 md:p-8 rounded-3xl ">
-                    <div>
-                        <span class="inline-block text-primary font-semibold mb-2 md:mb-3 uppercase tracking-wider text-xs md:text-sm">Soluções de TI de Ponta</span>
-                        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
-                            Soluções Completas de <span class="gradient-text">TI</span> para o Seu Negócio
-                        </h1>
-                    </div>
-                    <p class="text-base md:text-lg lg:text-xl text-gray-300 leading-relaxed">
-                        Da infraestrutura de servidores ao desenvolvimento personalizado, oferecemos os serviços tecnológicos necessários para manter o seu negócio funcionando sem problemas.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 md:gap-5 pt-4 md:pt-6">
-                        <button onclick="window.open('https://wa.me/258852470473?text=Olá%203DS%20Tech,%20gostaria%20de%20Começar%20Hoje%20com%20seus%20serviços.%20Por%20favor%20me%20contacte.', '_blank')" 
-                            class="btn-primary px-6 md:px-8 py-3 md:py-4 rounded-xl font-semibold text-white text-sm md:text-base">
-                            Começar Hoje
-                        </button>
-                        <button class="btn-outline text-white px-6 md:px-8 py-3 md:py-4 rounded-xl font-semibold hover:bg-primary/20 transition-colors text-sm md:text-base">
-                            Saber Mais
-                        </button>
-                    </div>
-                    <div class="flex items-cente btn-outline gap-3 md:gap-4 mt-6 md:mt-8 p-3 md:p-4 bg-primary/10 rounded-lg ">
-                        <div class="bg-primary rounded-lg px-3 md:px-4 py-1 md:py-2">
-                            <span class="text-white font-bold text-sm md:text-base">24/7</span>
-                        </div>
-                        <p class="text-gray-200 text-sm md:text-base">Suporte disponível 24 horas por dia, 7 dias por semana</p>
-                    </div>
+        </video>
+        <div class="absolute inset-0 bg-darkblue/80 mix-blend-multiply"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-darkblue to-transparent"></div>
+        <!-- Grid pattern overlay -->
+        <div class="absolute inset-0 opacity-20" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIj48cGF0aCBkPSJNMCAwaDYwdjYwSDB6Ii8+PC9nPjwvZz48L3N2Zz4=');"></div>
+    </div>
+    
+    <!-- Content overlay -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 relative z-10 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div class="text-white space-y-6 md:space-y-8 p-6 md:p-8 rounded-3xl">
+                <div>
+                    <span class="inline-block text-primary font-semibold mb-2 md:mb-3 uppercase tracking-wider text-xs md:text-sm">Soluções de TI de Ponta</span>
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
+                        Soluções Completas de <span class="gradient-text">TI</span> para o Seu Negócio
+                    </h1>
                 </div>
-                
-                <!-- Decorative tech element (empty for spacing) -->
-                <div class="hidden lg:block relative">
-                    <!-- Decorative circles -->
-                    <div class="absolute -top-20 -right-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl"></div>
-                    <div class="absolute top-40 right-20 w-32 h-32 bg-cyan-400/10 rounded-full blur-2xl"></div>
+                <p class="text-base md:text-lg lg:text-xl text-gray-300 leading-relaxed">
+                    Da infraestrutura de servidores ao desenvolvimento personalizado, oferecemos os serviços tecnológicos necessários para manter o seu negócio funcionando sem problemas.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 md:gap-5 pt-4 md:pt-6">
+                    <button onclick="window.open('https://wa.me/258852470473?text=Olá%203DS%20Tech,%20gostaria%20de%20Começar%20Hoje%20com%20seus%20serviços.%20Por%20favor%20me%20contacte.', '_blank')" 
+                        class="btn-primary px-6 md:px-8 py-3 md:py-4 rounded-xl font-semibold text-white text-sm md:text-base">
+                        Começar Hoje
+                    </button>
+                    <button class="btn-outline text-white px-6 md:px-8 py-3 md:py-4 rounded-xl font-semibold hover:bg-primary/20 transition-colors text-sm md:text-base">
+                        Saber Mais
+                    </button>
+                </div>
+                <div class="flex items-cente btn-outline gap-3 md:gap-4 mt-6 md:mt-8 p-3 md:p-4 bg-primary/10 rounded-lg ">
+                    <div class="bg-primary rounded-lg px-3 md:px-4 py-1 md:py-2">
+                        <span class="text-white font-bold text-sm md:text-base">24/7</span>
+                    </div>
+                    <p class="text-gray-200 text-sm md:text-base">Suporte disponível 24 horas por dia, 7 dias por semana</p>
                 </div>
             </div>
+            
+            <!-- Decorative tech element (empty for spacing) -->
+            <div class="hidden lg:block relative">
+                <!-- Decorative circles -->
+                <div class="absolute -top-20 -right-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl"></div>
+                <div class="absolute top-40 right-20 w-32 h-32 bg-cyan-400/10 rounded-full blur-2xl"></div>
+            </div>
         </div>
-        
-        <!-- Decorative tech pattern at bottom -->
-        <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-darkblue to-transparent z-10"></div>
-    </section>
+    </div>
+    
+    <!-- Decorative tech pattern at bottom -->
+    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-darkblue to-transparent z-10"></div>
+</section>
 
     <!-- Services Section -->
     <section id="services" class="py-16 md:py-24 bg-gradient-to-b from-darkblue to-darkblue/95 relative overflow-hidden">
@@ -718,7 +724,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
                 <div>
                      <div class="mb-3 md:mb-4">
-                        <img src="Copilot_20250724_005222.png" 
+                        <img src="Copilot_20250724_005222.webp" 
                              alt="3DS Tech Logo" 
                              class="h-10 md:h-12">
                     </div>
