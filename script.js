@@ -98,3 +98,100 @@ window.addEventListener('scroll', () => {
         }
     });
 });
+
+  // Enhanced Video Handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('bgVideo');
+            
+            // Ensure video plays and keeps playing
+            function ensureVideoPlayback() {
+                if (video.paused) {
+                    video.play().catch(e => {
+                        console.log('Video play prevented:', e);
+                        // Fallback: Show poster image if video can't play
+                        if (video.querySelector('img')) {
+                            video.style.backgroundImage = `url('${video.querySelector('img').src}')`;
+                            video.style.backgroundSize = 'cover';
+                            video.style.backgroundPosition = 'center';
+                            video.innerHTML = '';
+                        }
+                    });
+                }
+            }
+            
+            // Initial play attempt
+            ensureVideoPlayback();
+            
+            // Monitor for interruptions
+            video.addEventListener('pause', ensureVideoPlayback);
+            video.addEventListener('ended', function() {
+                video.currentTime = 0;
+                ensureVideoPlayback();
+            });
+            
+            // Handle visibility changes
+            document.addEventListener('visibilitychange', function() {
+                if (!document.hidden) {
+                    ensureVideoPlayback();
+                }
+            });
+            
+            // Buffer management
+            video.addEventListener('playing', function() {
+                if (video.buffered.length > 0) {
+                    const bufferEnd = video.buffered.end(video.buffered.length - 1);
+                    const gap = bufferEnd - video.currentTime;
+                    
+                    if (gap < 5) { // If buffer is running low
+                        video.currentTime = Math.min(video.currentTime + 10, video.duration - 1);
+                    }
+                }
+            });
+            
+            // Error handling
+            video.addEventListener('error', function() {
+                const fallback = video.querySelector('img');
+                if (fallback) {
+                    video.style.backgroundImage = `url('${fallback.src}')`;
+                    video.style.backgroundSize = 'cover';
+                    video.style.backgroundPosition = 'center';
+                    video.innerHTML = '';
+                }
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+
+                        // Close mobile menu if open
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+
+            // Intersection observer for fade-in effects
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        });
+           
