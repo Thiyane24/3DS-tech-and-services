@@ -195,3 +195,137 @@ window.addEventListener('scroll', () => {
             });
         });
      
+        // Enhanced video autoplay handling for cross-device compatibility
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('heroVideo');
+            const fallbackImage = document.getElementById('fallbackImage');
+            let playAttempted = false;
+            let videoLoaded = false;
+
+            // Function to attempt video play
+            function attemptVideoPlay() {
+                if (video && !playAttempted) {
+                    playAttempted = true;
+                    
+                    // Ensure video is muted (required for autoplay on most devices)
+                    video.muted = true;
+                    video.volume = 0;
+                    
+                    const playPromise = video.play();
+                    
+                    if (playPromise !== undefined) {
+                        playPromise
+                            .then(() => {
+                                console.log('Video autoplay started successfully');
+                                video.classList.add('video-loaded');
+                                video.classList.remove('video-loading');
+                                if (fallbackImage) {
+                                    fallbackImage.style.display = 'none';
+                                }
+                            })
+                            .catch(error => {
+                                console.log('Video autoplay failed:', error);
+                                handleVideoFailure();
+                            });
+                    }
+                }
+            }
+
+            // Function to handle video failure
+            function handleVideoFailure() {
+                if (fallbackImage) {
+                    fallbackImage.style.display = 'block';
+                    video.style.display = 'none';
+                }
+            }
+
+            // Video event listeners
+            if (video) {
+                video.addEventListener('loadedmetadata', function() {
+                    videoLoaded = true;
+                    attemptVideoPlay();
+                });
+
+                video.addEventListener('canplaythrough', function() {
+                    if (!playAttempted) {
+                        attemptVideoPlay();
+                    }
+                });
+
+                video.addEventListener('error', function(e) {
+                    console.log('Video loading error:', e);
+                    handleVideoFailure();
+                });
+
+                // For iOS Safari and other browsers that require user interaction
+                video.addEventListener('loadstart', function() {
+                    video.muted = true;
+                });
+
+                // Additional mobile-specific handling
+                if (video.readyState >= 3) { // HAVE_FUTURE_DATA
+                    attemptVideoPlay();
+                }
+            }
+
+            // Intersection Observer to retry video play when section comes into view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && video && !video.playing) {
+                        attemptVideoPlay();
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            const heroSection = document.getElementById('home');
+            if (heroSection) {
+                observer.observe(heroSection);
+            }
+
+            // Retry video play on any user interaction
+            const retryVideoPlay = () => {
+                if (video && video.paused && videoLoaded) {
+                    video.play().catch(console.log);
+                }
+            };
+
+            // Add event listeners for user interactions
+            ['click', 'touchstart', 'scroll', 'keydown'].forEach(event => {
+                document.addEventListener(event, retryVideoPlay, { once: true, passive: true });
+            });
+
+            // Force video attributes for better mobile compatibility
+            if (video) {
+                video.setAttribute('webkit-playsinline', 'true');
+                video.setAttribute('playsinline', 'true');
+                video.setAttribute('muted', 'true');
+                video.playsInline = true;
+                
+                // Android WeChat specific attributes
+                video.setAttribute('x5-video-player-type', 'h5');
+                video.setAttribute('x5-video-player-fullscreen', 'true');
+                video.setAttribute('x5-video-orientation', 'portrait');
+            }
+        });
+
+        // Additional mobile browser detection and handling
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        function isIOS() {
+            return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        }
+
+        // iOS-specific handling
+        if (isIOS()) {
+            document.addEventListener('DOMContentLoaded', function() {
+                const video = document.getElementById('heroVideo');
+                if (video) {
+                    // Additional iOS-specific attributes
+                    video.setAttribute('webkit-playsinline', '');
+                    video.webkitEnterFullscreen = false;
+                    video.webkitExitFullscreen = false;
+                }
+            });
+        }
