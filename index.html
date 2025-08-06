@@ -132,45 +132,20 @@
     </nav>
 
     <!-- Hero Section -->
-   <section id="home" class="relative min-h-screen flex items-center pt-20 md:pt-24 pb-16 overflow-hidden hero-fallback">
-        <!-- Video Background with enhanced autoplay support -->
-        <video 
-            id="heroVideo"
-            class="hero-video video-loading"
-            autoplay 
-            muted 
-            loop 
-            playsinline 
-            preload="metadata"
-            disablePictureInPicture
-            webkit-playsinline="true"
-            x5-playsinline="true"
-            x5-video-player-type="h5"
-            x5-video-player-fullscreen="true"
-            x5-video-orientation="portraint"
-        >
+    <section id="home" class="relative min-h-screen flex items-center pt-20 md:pt-24 pb-16 overflow-hidden">
+        <!-- Video Background -->
+       <video autoplay muted loop playsinline class="w-full h-full object-cover" disablePictureInPicture>
             <source src="a subtle, light, and slightly waving motion for a gradient from black to blue to light purple, suitable for a website hero section background.mp4" type="video/mp4">
-            <!-- Multiple format support for better compatibility -->
-            <source src="a subtle, light, and slightly waving motion for a gradient from black to blue to light purple, suitable for a website hero section background.webm" type="video/webm">
-            <source src="a subtle, light, and slightly waving motion for a gradient from black to blue to light purple, suitable for a website hero section background.ogv" type="video/ogg">
+            <!-- Fallback image if video doesn't load -->
+            <img src="Gemini_Generated_Image_mn2h07mn2h07mn2h.webp" 
+                alt="Technology Solutions" 
+                class="w-full h-full object-cover object-center">
         </video>
-        
-        <!-- Fallback image that shows while video loads -->
-        <img 
-            id="fallbackImage"
-            src="Gemini_Generated_Image_mn2h07mn2h07mn2h.webp" 
-            alt="Technology Solutions" 
-            class="hero-video"
-            style="display: none;"
-        />
-        
-        <!-- Overlay layers -->
-        <div class="absolute inset-0 bg-darkblue opacity-80 mix-blend-multiply"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
-        
+        <div class="absolute inset-0 bg-darkblue/80 mix-blend-multiply"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-darkblue to-transparent"></div>
         <!-- Grid pattern overlay -->
         <div class="absolute inset-0 opacity-20" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIj48cGF0aCBkPSJNMCAwaDYwdjYwSDB6Ii8+PC9nPjwvZz48L3N2Zz4=');"></div>
-        
+    </div>
         <!-- Content overlay -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 relative z-10 w-full">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
@@ -193,7 +168,7 @@
                             Saber Mais
                         </button>
                     </div>
-                    <div class="flex items-center gap-3 md:gap-4 mt-6 md:mt-8 p-3 md:p-4 bg-primary\/10 rounded-lg border border-white/10">
+                    <div class="flex items-cente btn-outline gap-3 md:gap-4 mt-6 md:mt-8 p-3 md:p-4 bg-primary/10 rounded-lg ">
                         <div class="bg-primary rounded-lg px-3 md:px-4 py-1 md:py-2">
                             <span class="text-white font-bold text-sm md:text-base">24/7</span>
                         </div>
@@ -201,17 +176,17 @@
                     </div>
                 </div>
                 
-                <!-- Decorative tech element -->
+                <!-- Decorative tech element (empty for spacing) -->
                 <div class="hidden lg:block relative">
-                    <!-- Animated decorative circles -->
-                    <div class="absolute -top-20 -right-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
-                    <div class="absolute top-40 right-20 w-32 h-32 bg-cyan-400/10 rounded-full blur-2xl animate-bounce"></div>
+                    <!-- Decorative circles -->
+                    <div class="absolute -top-20 -right-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl"></div>
+                    <div class="absolute top-40 right-20 w-32 h-32 bg-cyan-400/10 rounded-full blur-2xl"></div>
                 </div>
             </div>
         </div>
         
         <!-- Decorative tech pattern at bottom -->
-        <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-900 to-transparent z-10"></div>
+        <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-darkblue to-transparent z-10"></div>
     </section>
 
     <!-- Services Section -->
