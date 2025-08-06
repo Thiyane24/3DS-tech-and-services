@@ -194,40 +194,4 @@ window.addEventListener('scroll', () => {
                 observer.observe(el);
             });
         });
-        // IOS video player.
-        document.addEventListener('DOMContentLoaded', function() {
-    const video = document.querySelector('video');
-    
-    // iOS workaround
-    if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
-        video.setAttribute('playsinline', '');
-        video.setAttribute('muted', '');
-        
-        // Some iOS versions require this
-        video.addEventListener('loadedmetadata', function() {
-            video.play().catch(e => {
-                // Fallback if autoplay is blocked
-                const playButton = document.createElement('button');
-                playButton.innerHTML = 'Play Video';
-                playButton.style.position = 'absolute';
-                playButton.style.bottom = '20px';
-                playButton.style.left = '50%';
-                playButton.style.transform = 'translateX(-50%)';
-                playButton.style.zIndex = '10';
-                playButton.style.padding = '10px 20px';
-                playButton.style.backgroundColor = 'rgba(11, 8, 141, 0.8)';
-                playButton.style.color = 'white';
-                playButton.style.border = 'none';
-                playButton.style.borderRadius = '5px';
-                playButton.style.cursor = 'pointer';
-                
-                playButton.addEventListener('click', function() {
-                    video.play();
-                    playButton.style.display = 'none';
-                });
-                
-                document.querySelector('#home').appendChild(playButton);
-            });
-        });
-    }
-});
+     
